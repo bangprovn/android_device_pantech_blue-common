@@ -12,16 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from Sony common
-include device/sony/common/BoardConfigCommon.mk
+# inherit from pantech common
+include device/pantech/common/BoardConfigCommon.mk
 
 # inherit from qcom-common
-include device/sony/qcom-common/BoardConfigCommon.mk
+include device/pantech/qcom-common/BoardConfigCommon.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/pantech/blue-common/include
 
 # Kernel properties
-TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
+TARGET_KERNEL_SOURCE := kernel/pantech/msm8x60
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
@@ -46,15 +46,15 @@ TARGET_KRAIT_BIONIC_BBTHRESH  := 64
 TARGET_KRAIT_BIONIC_PLDSIZE   := 64
 
 # Kernel information
-BOARD_KERNEL_CMDLINE := # This is ignored by sony's bootloader
+BOARD_KERNEL_CMDLINE := # This is ignored by pantech's bootloader
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_RECOVERY_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-SONY_FORCE_RAMDISK_ADDRESS := 0x81900000
+pantech_FORCE_RAMDISK_ADDRESS := 0x81900000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01700000
 
 # Dumpstate
-BOARD_LIB_DUMPSTATE := libdumpstate.sony
+BOARD_LIB_DUMPSTATE := libdumpstate.pantech
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -69,7 +69,7 @@ WIFI_DRIVER_MODULE_NAME          := "wlan"
 WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 
-BOARD_USE_SONY_MACUPDATE := true
+BOARD_USE_pantech_MACUPDATE := true
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB -DQCOM_BSP_CAMERA_ABI_HACK
@@ -91,11 +91,11 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 
 # Custom boot
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-BOARD_CUSTOM_BOOTIMG_MK := device/sony/blue-common/custombootimg.mk
-TARGET_RELEASETOOLS_EXTENSIONS := device/sony/blue-common
+BOARD_CUSTOM_BOOTIMG_MK := device/pantech/blue-common/custombootimg.mk
+TARGET_RELEASETOOLS_EXTENSIONS := device/pantech/blue-common
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
-TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/pantech/blue-common/rootdir/fstab.qcom
 
 # QCOM/CAF hardware
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
@@ -151,12 +151,12 @@ TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,barrier=1,noauto_da_alloc,discard"
 TW_CRYPTO_FS_FLAGS := "0x00000406"
 TW_CRYPTO_KEY_LOC := "footer"
 TW_INCLUDE_FUSE_EXFAT := true
-TW_BOARD_CUSTOM_GRAPHICS := ../../../device/sony/blue-common/recovery/twrpgraphics.c
+TW_BOARD_CUSTOM_GRAPHICS := ../../../device/pantech/blue-common/recovery/twrpgraphics.c
 TW_MAX_BRIGHTNESS := 255
 TW_NO_USB_STORAGE := true
 
 BOARD_SEPOLICY_DIRS += \
-    device/sony/blue-common/sepolicy
+    device/pantech/blue-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     file_contexts \
@@ -187,4 +187,4 @@ BOARD_SEPOLICY_UNION += \
     wpa_supplicant.te
 
 # inherit from the proprietary version
--include vendor/sony/blue-common/BoardConfigVendor.mk
+-include vendor/pantech/blue-common/BoardConfigVendor.mk
